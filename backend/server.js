@@ -1,9 +1,13 @@
 import app, { initializeDB } from './src/app.js';
 import "dotenv/config";
+import http from 'http';
+import { initSocket } from './src/sockets/server.socket.js';
 
 const PORT = process.env.PORT || 3000;
 
+const httpServer = http.createServer(app);
 
+initSocket(httpServer);
 
 async function startServer() {
   try {
@@ -11,7 +15,7 @@ async function startServer() {
     await initializeDB();
 
     // Start server
-    app.listen(PORT, () => {
+    httpServer.listen(PORT, () => {
       console.log(`✅ Server started on port - ${PORT}`);
     });
   } catch (error) {
