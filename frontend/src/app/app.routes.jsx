@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import Register from "../features/auth/Pages/Register";
 import Login from "../features/auth/pages/Login";
 import Dashboard from "../features/chat/pages/Dashboard";
@@ -18,5 +18,9 @@ export const router = createBrowserRouter([
     {
         path: '/register',
         element: <Register />
+    },
+    {
+        path: '/dashboard',
+        element: <Navigate to='/' replace/>
     }
 ])

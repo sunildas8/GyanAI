@@ -21,9 +21,6 @@ const Login = () => {
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
 
-  const user = useSelector(state => state.auth.user)
-  const loading = useSelector(state => state.auth.loading)
-
 
   useEffect(() => {
     // Clear error when user is navigating away
@@ -31,10 +28,6 @@ const Login = () => {
       dispatch(setError(null))
     }
   }, [dispatch])
-
-  if (!loading && user) {
-    return <Navigate to="/" replace />
-  }
 
   const validateForm = () => {
     const newErrors = {}
